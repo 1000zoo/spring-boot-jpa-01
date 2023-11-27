@@ -1,5 +1,6 @@
 package zoo.jpashop.service;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +8,7 @@ import zoo.jpashop.domain.Delivery;
 import zoo.jpashop.domain.Member;
 import zoo.jpashop.domain.Order;
 import zoo.jpashop.domain.OrderItem;
+import zoo.jpashop.domain.OrderSearch;
 import zoo.jpashop.domain.item.Item;
 import zoo.jpashop.repository.ItemRepository;
 import zoo.jpashop.repository.MemberRepository;
@@ -45,7 +47,7 @@ public class OrderService {
         order.cancel();
     }
 
-//    public List<Order> findOrders(OrderSearch orderSearch) {
-//        return orderRepository.findAll(orderSearch);
-//    }
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
